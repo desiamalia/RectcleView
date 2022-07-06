@@ -1,6 +1,7 @@
 package com.desiamalia.recyclerview.adapter
 
 import android.content.Context
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,8 +23,9 @@ class AdapterTeamBola(private val context : Context,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data?.get(position)
-        holder.foto.setImageResource(item?.foto ?: 0)
+        holder.foto.setImageResource(item?.foto ?:0)
         holder.nama.text = item?.nama
+
         holder.itemView.setOnClickListener {
             itemclick.detailData(item)
         }
@@ -37,6 +39,6 @@ class AdapterTeamBola(private val context : Context,
         val nama = binding.txtnama
     }
     interface OneClickListener {
-        fun detailData(item : Pemain)
+        fun detailData(item : Pemain?)
     }
 }
